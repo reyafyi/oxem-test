@@ -1,0 +1,103 @@
+@import '../css/palette';
+
+.slider_container {
+    background-color: $slider-bg;
+
+    height: 64px;
+    border: 2px solid $slider-bg;
+    padding: 12px 24px 12px 36px;
+    border-radius: 16px;
+
+    position: relative;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    flex-basis: 0;
+
+    .text_input {
+        font-family: "Nekst", sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+        color: $slider-text;
+        line-height: 36px;
+        vertical-align: baseline;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        flex: 1;
+        width: 100%;
+    }
+
+    .slider_input {
+        -webkit-appearance: none;
+
+        position: absolute;
+        bottom: 0;
+        left: 12px;
+        // firefox sucks
+        //right: 12px;
+        width: calc(100% - 24px);
+        height: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+
+        background: linear-gradient(to right, $primary, $primary), $slider-track;
+        background-size: var(--percentage, 0%) 100%;
+        background-repeat: no-repeat;
+        outline: none;
+        cursor: pointer;
+
+        transition: height 0.2s ease-in-out;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: $primary;
+            cursor: pointer;
+            transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+        }
+
+        &::-moz-range-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: none;
+            border-radius: 50%;
+            background: $primary;
+            cursor: pointer;
+            transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+        }
+
+        &:hover {
+            height: 1px;
+
+            &::-webkit-slider-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            &::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    transition: background-color 0.2s ease-in-out;
+    &:active, &:focus, &:focus-within {
+        background: white;
+    }
+
+    &.small {
+        padding: 12px 24px;
+
+        .text_input {
+            font-size: 22px;
+        }
+    }
+}
